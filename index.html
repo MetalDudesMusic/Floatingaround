@@ -307,6 +307,54 @@
       .form-success { color: #4ade80; background: rgba(34, 197, 94, 0.12); }
     }
 
+    /* ── Payment ── */
+    .payment-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pay-btn {
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: #fff;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, filter 0.15s;
+    }
+
+    .pay-btn:hover { filter: brightness(1.15); transform: translateY(-2px); }
+    .pay-btn:active { transform: translateY(0); }
+
+    .pay-btn.bitcoin  { border-color: #f7931a; }
+    .pay-btn.paypal   { border-color: #009cde; }
+    .pay-btn.card     { border-color: #6366f1; }
+
+    .pay-btn .pay-icon { font-size: 1.6rem; }
+    .pay-btn .pay-label { font-size: 0.75rem; font-weight: 400; opacity: 0.75; }
+
+    .payment-success {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.08);
+      color: #4ade80;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
     /* ── Background video ── */
     #bg-video {
       position: fixed;
@@ -401,6 +449,56 @@
 
     <hr>
 
+    <!-- ── Payment ── -->
+    <section>
+      <p class="section-label">Payment</p>
+      <div class="payment-buttons">
+
+        <!--
+          BITCOIN BUTTON
+          When ready, replace the test alert below with your real BTC wallet address.
+          Example: window.location.href = "bitcoin:YOUR_WALLET_ADDRESS?amount=0.001"
+          Or link to a Coinbase Commerce checkout:
+          window.location.href = "https://commerce.coinbase.com/checkout/YOUR_CHECKOUT_ID"
+        -->
+        <button class="pay-btn bitcoin" onclick="handlePayment('bitcoin')">
+          <span class="pay-icon">₿</span>
+          Bitcoin
+          <span class="pay-label">Pay with BTC</span>
+        </button>
+
+        <!--
+          PAYPAL BUTTON
+          When ready, replace the test alert below with your real PayPal link.
+          Example: window.location.href = "https://paypal.me/YOURHANDLE/10AUD"
+          Or use a PayPal hosted button embed from your PayPal dashboard.
+        -->
+        <button class="pay-btn paypal" onclick="handlePayment('paypal')">
+          <span class="pay-icon">🅿</span>
+          PayPal
+          <span class="pay-label">Pay with PayPal</span>
+        </button>
+
+        <!--
+          CARD BUTTON
+          When ready, replace the test alert below with your real Stripe checkout link.
+          Example: window.location.href = "https://buy.stripe.com/YOUR_LINK"
+          Or embed a Stripe payment form using their JS library.
+        -->
+        <button class="pay-btn card" onclick="handlePayment('card')">
+          <span class="pay-icon">💳</span>
+          Card
+          <span class="pay-label">Pay by Card</span>
+        </button>
+
+      </div>
+      <div class="payment-success" id="paymentSuccess">
+        Thank you, this is a test.
+      </div>
+    </section>
+
+    <hr>
+
     <!-- ── Contact ── -->
     <section>
       <p class="section-label">Get in touch</p>
@@ -461,6 +559,24 @@
       document.getElementById("contactForm").style.display = "none";
       document.getElementById("formSuccess").style.display = "block";
     });
+
+    // ── Payment handler ──────────────────────────────────────────
+    // Replace each case below with your real payment link when ready.
+    function handlePayment(method) {
+      if (method === 'bitcoin') {
+        // TODO: Replace with your real BTC wallet or Coinbase Commerce link
+        // window.location.href = "bitcoin:YOUR_WALLET_ADDRESS";
+      } else if (method === 'paypal') {
+        // TODO: Replace with your real PayPal.me link
+        // window.location.href = "https://paypal.me/YOURHANDLE";
+      } else if (method === 'card') {
+        // TODO: Replace with your real Stripe checkout link
+        // window.location.href = "https://buy.stripe.com/YOUR_LINK";
+      }
+      // Show test success message
+      document.getElementById("paymentSuccess").style.display = "block";
+    }
+    // ─────────────────────────────────────────────────────────────
   </script>
 </body>
 </html>
