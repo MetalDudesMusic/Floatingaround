@@ -220,3 +220,29 @@ document.getElementById("contactForm").addEventListener("submit", async function
 | Text colour | `--text` variable in `:root` CSS |
 | Accent colour | `--accent` variable in `:root` CSS |
 | Pinokio title | `pinokio.json` → `title` |
+
+---
+
+## Hosting
+
+This site is **completely standalone — no Pinokio required** to host or run it publicly.
+
+The only files needed for web hosting are:
+
+- `index.html`
+- `logo.png`
+- `background.mp4`
+
+> `pinokio.json` is only used by Pinokio and is not needed for web hosting.
+
+### Hosting Options
+
+| Host | Cost | How |
+|---|---|---|
+| **GitHub Pages** | Free | Already live at https://metaldudesmusic.github.io/Floatingaround/ |
+| **Netlify** | Free | Go to [netlify.com/drop](https://app.netlify.com/drop) and drag & drop the folder |
+| **Cloudflare Pages** | Free | Connect your GitHub repo at [pages.cloudflare.com](https://pages.cloudflare.com) |
+| **Your own web host** | Paid | Upload files via FTP or cPanel file manager |
+| **VPS (e.g. DigitalOcean)** | Paid | Drop files into `/var/www/html` |
+
+No server software, no database, no Node.js or Python required — it runs on any host that can serve static files.
