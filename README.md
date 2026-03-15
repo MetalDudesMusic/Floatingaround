@@ -220,6 +220,97 @@ document.getElementById("contactForm").addEventListener("submit", async function
 | Text colour | `--text` variable in `:root` CSS |
 | Accent colour | `--accent` variable in `:root` CSS |
 | Pinokio title | `pinokio.json` → `title` |
+| Payment links | `handlePayment()` function in `<script>` tag |
+
+---
+
+## Payment Section
+
+The site includes three payment buttons — **Bitcoin**, **PayPal**, and **Card**. They currently show a test message when clicked. Follow the steps below to activate each one.
+
+---
+
+### Bitcoin
+
+1. Find the `handlePayment` function in the `<script>` tag at the bottom of `index.html`.
+2. Uncomment and replace the Bitcoin line with your wallet address:
+   ```js
+   window.location.href = "bitcoin:YOUR_WALLET_ADDRESS";
+   ```
+   Or use a Coinbase Commerce hosted checkout:
+   ```js
+   window.location.href = "https://commerce.coinbase.com/checkout/YOUR_CHECKOUT_ID";
+   ```
+
+**Bitcoin button logo:**
+To replace the `₿` symbol with a real Bitcoin logo image:
+1. Save your Bitcoin logo as `bitcoin-logo.png` in the project root.
+2. In `index.html`, find the Bitcoin button and replace:
+   ```html
+   <span class="pay-icon">₿</span>
+   ```
+   With:
+   ```html
+   <!-- Replace bitcoin-logo.png with your actual logo filename -->
+   <img src="bitcoin-logo.png" alt="Bitcoin" style="width:32px;height:32px;object-fit:contain;">
+   ```
+
+---
+
+### PayPal
+
+1. Find the `handlePayment` function and uncomment the PayPal line:
+   ```js
+   window.location.href = "https://paypal.me/YOURHANDLE";
+   ```
+   Replace `YOURHANDLE` with your PayPal.me username.
+
+**PayPal button logo:**
+To replace the `🅿` symbol with a real PayPal logo image:
+1. Save your PayPal logo as `paypal-logo.png` in the project root.
+2. Find the PayPal button and replace:
+   ```html
+   <span class="pay-icon">🅿</span>
+   ```
+   With:
+   ```html
+   <!-- Replace paypal-logo.png with your actual logo filename -->
+   <img src="paypal-logo.png" alt="PayPal" style="width:32px;height:32px;object-fit:contain;">
+   ```
+
+---
+
+### Card (Stripe)
+
+1. Sign up at [stripe.com](https://stripe.com) and create a Payment Link.
+2. Find the `handlePayment` function and uncomment the card line:
+   ```js
+   window.location.href = "https://buy.stripe.com/YOUR_LINK";
+   ```
+   Replace `YOUR_LINK` with your Stripe payment link ID.
+
+**Card button logo:**
+To replace the `💳` symbol with a real card/Stripe logo image:
+1. Save your logo as `card-logo.png` in the project root.
+2. Find the Card button and replace:
+   ```html
+   <span class="pay-icon">💳</span>
+   ```
+   With:
+   ```html
+   <!-- Replace card-logo.png with your actual logo filename -->
+   <img src="card-logo.png" alt="Card" style="width:32px;height:32px;object-fit:contain;">
+   ```
+
+---
+
+### Removing the test message
+
+Once your real payment links are active, remove the test success message by deleting this line from `index.html`:
+
+```js
+document.getElementById("paymentSuccess").style.display = "block";
+```
 
 ---
 
