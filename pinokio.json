@@ -1,0 +1,7 @@
+{
+  "title": "personal-website",
+  "description": "Minimal personal website with avatar, bio, projects, and contact form",
+  "plugin": {
+    "menu": []
+  }
+}
